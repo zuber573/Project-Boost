@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     void OnCollisionEnter(Collision other)
@@ -16,9 +16,17 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Fuel");
                 break;
                 default:
+                ReloadLevel();
                 Debug.Log("sorry you blew tf up");
                 break;
 
+
+
+        }
+        void ReloadLevel()
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
         }
     }
 }
